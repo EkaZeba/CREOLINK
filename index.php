@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Database configuration 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'creolink');
@@ -137,8 +135,8 @@ function getChatHistory($limit = 10) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREOLINK - Home</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="/CREOLINK/styles.css">
+<link rel="stylesheet" href="/CREOLINK/chatbot.css">
 </head>
 <body>
     <!-- Navigation -->
