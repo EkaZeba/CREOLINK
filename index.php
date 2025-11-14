@@ -138,7 +138,7 @@ function getChatHistory($limit = 10) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREOLINK - Home</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="chatbot.css">
+<link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -220,7 +220,7 @@ function getChatHistory($limit = 10) {
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <script src="chatbot.js"></script>
+   <script src="/CREOLINK/script.js"></script>
+   <script src="/CREOLINK/chatbot.js"></script>
 </body>
 </html>
