@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Creolink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/chatbot.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #539946;
+            --dark-green: #37823c;
+            --light-green: #58a24b;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #333333;
+            --orange: #ff6b35;
+            --footer-bg: #0a2c4e;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .top-header {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-selector {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            color: var(--dark-gray);
+            min-width: 120px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .language-dropdown a {
+            display: block;
+            padding: 8px 15px;
+            text-decoration: none;
+            color: var(--dark-gray);
+        }
+
+        .language-dropdown a:hover {
+            background: var(--light-gray);
+        }
+
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+
+        .main-header {
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-green);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 100;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--light-gray);
+            color: var(--primary-green);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-login:hover {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-signup {
+            background: var(--primary-green);
+            color: var(--white);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-signup:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark-gray);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Categories Header */
+        .categories-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .categories-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .categories-header p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Navigation */
+        .service-navigation {
+            background: var(--white);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .service-nav-btn {
+            padding: 15px 25px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-nav-btn:hover {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .service-nav-btn.active {
+            background: var(--primary-green);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(83, 153, 70, 0.3);
+        }
+
+        /* Service Sections */
+        .service-section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .service-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .service-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .service-icon-large {
+            font-size: 80px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .service-title {
+            font-size: 42px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-subtitle {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Fiber Optics Focus Section */
+        .fiber-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 80px 0;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fiber-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .fiber-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .fiber-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .fiber-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .fiber-stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .fiber-stat:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Service Features */
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--primary-green);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Service Plans */
+        .service-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--primary-green);
+        }
+
+        .plan-card.popular {
+            border-color: var(--primary-green);
+            transform: scale(1.05);
+        }
+
+        .plan-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .plan-period {
+            color: var(--medium-gray);
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            color: var(--medium-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li i {
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        /* Technology Showcase */
+        .tech-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 60px 0;
+        }
+
+        .tech-content h3 {
+            font-size: 32px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .tech-content p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tech-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .tech-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .tech-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .service-cta {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-top: 60px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary, .btn-cta-secondary {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-cta-primary {
+            background: var(--white);
+            color: var(--primary-green);
+        }
+
+        .btn-cta-primary:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta-secondary {
+            background: transparent;
+            color: var(--brown);
+            border-color: var(--white);
+        }
+
+        .btn-cta-secondary:hover {
+            background: var(--white);
+            color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 60px 0;
+        }
+
+        .table-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 25px;
+            text-align: center;
+        }
+
+        .table-header h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .table-content {
+            padding: 0;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--light-gray);
+            align-items: center;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-row.header {
+            background: var(--light-gray);
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .table-feature {
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .table-value {
+            text-align: center;
+            color: var(--medium-gray);
+        }
+
+        .table-value i {
+            color: var(--primary-green);
+            font-size: 18px;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(83, 153, 70, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(83, 153, 70, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(83, 153, 70, 0.5);
+            }
+        }
+
+        .glowing {
+            animation: glow 2s infinite;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links h4, .footer-services h4, .footer-shop h4, .footer-social h4 {
+            color: var(--white);
+            font-size: 19.2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links ul, .footer-services ul, .footer-shop ul {
+            list-style: none;
+        }
+
+        .footer-links li, .footer-services li, .footer-shop li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a, .footer-services a, .footer-shop a {
+            opacity: 0.8;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .footer-links a:hover, .footer-services a:hover, .footer-shop a:hover {
+            opacity: 1;
+            color: var(--light-green);
+            padding-left: 5px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-bottom-links a:hover {
+            opacity: 1;
+            color: var(--light-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .tech-showcase {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .fiber-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-plans {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.popular {
+                transform: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .categories-header {
+                padding: 80px 0;
+            }
+
+            .categories-header h1 {
+                font-size: 36px;
+            }
+
+            .service-title {
+                font-size: 32px;
+            }
+
+            .service-nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-nav-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .table-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .table-row.header {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-cta-primary, .btn-cta-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .header-actions {
+                gap: 15px;
+            }
+
+            .btn-login, .btn-signup {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fiber-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .plan-price {
+                font-size: 36px;
+            }
+            
+            .top-header .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="contact-info">
+                <div><i class="fas fa-phone"></i> (+237) 680000608</div>
+                <div><i class="fas fa-envelope"></i> support@creolink.com</div>
+            </div>
+            <div class="language-selector">
+                <i class="fas fa-globe"></i>
+                <span id="current-language">English</span>
+                <i class="fas fa-chevron-down"></i>
+                <div class="language-dropdown" id="language-dropdown">
+                    <a href="#" data-lang="en">English</a>
+                    <a href="#" data-lang="fr">Français</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/images/creolink_logo.png" alt="Creolink - Premium Fiber Optics & Communication Solutions">
+                </a>
+            </div>
+            <nav>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="active">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="categories.html">NumeroLink (TV Services)</a>
+                            <a href="categories.html">HomeLink (Home Internet)</a>
+                            <a href="categories.html">OfficeLink (Business Internet)</a>
+                            <a href="categories.html">Corporate Solutions</a>
+                        </div>
+                    </li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+        <a class="btn-login" href="/pages/login.html">Loing</a>
+        <a class="btn-signup" href="/pages/signup.html">Sign Up</a>
+      </div>
+        </div>
+    </header>
+
+    <!-- Categories Header -->
+    <header class="categories-header">
+        <div class="container">
+            <h1>Premium Fiber Optic Solutions</h1>
+            <p>Experience the future of connectivity with our cutting-edge fiber optic services designed for homes and businesses</p>
+        </div>
+    </header>
+
+    <!-- Service Navigation -->
+    <section class="service-navigation">
+        <div class="container">
+            <div class="service-nav-container">
+                <button class="service-nav-btn active" onclick="showService('numerolink')">
+                    <i class="fas fa-tv"></i> NumeroLink TV
+                </button>
+                <button class="service-nav-btn" onclick="showService('homelink')">
+                    <i class="fas fa-home"></i> HomeLink Internet
+                </button>
+                <button class="service-nav-btn" onclick="showService('officelink')">
+                    <i class="fas fa-building"></i> OfficeLink Business
+                </button>
+                <button class="service-nav-btn" onclick="showService('corporate')">
+                    <i class="fas fa-network-wired"></i> Corporate Solutions
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fiber Optics Hero Section -->
+    <section class="fiber-hero">
+        <div class="container">
+            <div class="fiber-content">
+                <h2>Why Fiber Optics?</h2>
+                <p>Experience speeds up to 100x faster than traditional connections with unmatched reliability</p>
+                
+                <div class="fiber-stats">
+                    <div class="fiber-stat">
+                        <span class="stat-number">1 Gbps</span>
+                        <span class="stat-label">Maximum Speed</span>
+                    </div>
+                    <div class="fiber-stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime Guarantee</span>
+                    </div>
+                    <div class="fiber-stat">
+                        <span class="stat-number">5ms</span>
+                        <span class="stat-label">Average Latency</span>
+                    </div>
+                    <div class="fiber-stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NumeroLink TV Service -->
+    <section id="numerolink" class="service-section active">
+        <div class="container">
+            <div class="service-header">
+                <div class="service-icon-large">
+                    <i class="fas fa-tv"></i>
+                </div>
+                <h2 class="service-title">NumeroLink TV</h2>
+                <p class="service-subtitle">Premium television experience with crystal-clear 4K streaming and extensive channel lineup</p>
+            </div>
+
+            <div class="tech-showcase">
+                <div class="tech-content">
+                    <h3>Revolutionary TV Experience</h3>
+                    <p>Our fiber-optic TV service delivers unparalleled picture quality and reliability. With advanced compression technology and dedicated bandwidth, experience buffer-free entertainment like never before.</p>
+                    <p>Enjoy exclusive features like multi-room viewing, cloud DVR, and seamless integration with popular streaming platforms.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-cta-primary" onclick="contactForService('NumeroLink TV')">
+                            <i class="fas fa-comments"></i> Get Quote
+                        </button>
+                        <button class="btn-cta-secondary" onclick="viewPlans('numerolink')">
+                            <i class="fas fa-eye"></i> View Plans
+                        </button>
+                    </div>
+                </div>
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="4K TV Experience">
+                </div>
+            </div>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3 class="feature-title">200+ Channels</h3>
+                    <p class="feature-description">Extensive channel lineup including premium sports, movies, and international content</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="feature-title">Cloud DVR</h3>
+                    <p class="feature-description">Record up to 500 hours of your favorite shows and access them from any device</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-Device Streaming</h3>
+                    <p class="feature-description">Watch on up to 5 devices simultaneously with full HD quality</p>
+                </div>
+            </div>
+
+            <div class="service-plans">
+                <div class="plan-card">
+                    <h3 class="plan-name">Basic TV</h3>
+                    <div class="plan-price">$29.99</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 100+ Channels</li>
+                        <li><i class="fas fa-check"></i> HD Quality</li>
+                        <li><i class="fas fa-times"></i> No DVR</li>
+                        <li><i class="fas fa-check"></i> 1 Device Streaming</li>
+                        <li><i class="fas fa-times"></i> No Premium Channels</li>
+                    </ul>
+                    <button class="btn-cta-primary" onclick="selectPlan('Basic TV', 29.99)">Select Plan</button>
+                </div>
+
+                <div class="plan-card popular">
+                    <h3 class="plan-name">Family TV</h3>
+                    <div class="plan-price">$49.99</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 150+ Channels</li>
+                        <li><i class="fas fa-check"></i> 4K Ultra HD</li>
+                        <li><i class="fas fa-check"></i> 100hr Cloud DVR</li>
+                        <li><i class="fas fa-check"></i> 3 Device Streaming</li>
+                        <li><i class="fas fa-check"></i> Premium Sports</li>
+                    </ul>
+                    <button class="btn-cta-primary glowing" onclick="selectPlan('Family TV', 49.99)">Select Plan</button>
+                </div>
+
+                <div class="plan-card">
+                    <h3 class="plan-name">Ultimate TV</h3>
+                    <div class="plan-price">$79.99</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 200+ Channels</li>
+                        <li><i class="fas fa-check"></i> 4K HDR Quality</li>
+                        <li><i class="fas fa-check"></i> 500hr Cloud DVR</li>
+                        <li><i class="fas fa-check"></i> 5 Device Streaming</li>
+                        <li><i class="fas fa-check"></i> All Premium Channels</li>
+                    </ul>
+                    <button class="btn-cta-primary" onclick="selectPlan('Ultimate TV', 79.99)">Select Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HomeLink Internet Service -->
+    <section id="homelink" class="service-section">
+        <div class="container">
+            <div class="service-header">
+                <div class="service-icon-large">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h2 class="service-title">HomeLink Internet</h2>
+                <p class="service-subtitle">Lightning-fast fiber optic internet for your home with symmetrical upload and download speeds</p>
+            </div>
+
+            <div class="tech-showcase">
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fiber Optic Installation">
+                </div>
+                <div class="tech-content">
+                    <h3>Fiber to Your Home</h3>
+                    <p>Our dedicated fiber lines bring unparalleled internet speeds directly to your residence. Whether you're streaming, gaming, or working from home, experience seamless connectivity.</p>
+                    <p>With symmetrical speeds, upload is just as fast as download, making video calls, cloud backups, and content creation effortless.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-cta-primary" onclick="contactForService('HomeLink Internet')">
+                            <i class="fas fa-comments"></i> Get Quote
+                        </button>
+                        <button class="btn-cta-secondary" onclick="viewPlans('homelink')">
+                            <i class="fas fa-eye"></i> View Plans
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Gigabit Speeds</h3>
+                    <p class="feature-description">Up to 1 Gbps download and upload speeds for all your connected devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Security</h3>
+                    <p class="feature-description">Built-in network security with parental controls and threat protection</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="feature-title">Whole Home WiFi</h3>
+                    <p class="feature-description">Mesh WiFi system ensures strong signal in every corner of your home</p>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <div class="table-header">
+                    <h3>Internet Speed Comparison</h3>
+                </div>
+                <div class="table-content">
+                    <div class="table-row header">
+                        <div class="table-feature">Feature</div>
+                        <div class="table-value">Basic 100Mbps</div>
+                        <div class="table-value">Standard 300Mbps</div>
+                        <div class="table-value">Premium 1Gbps</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-feature">Download Speed</div>
+                        <div class="table-value">100 Mbps</div>
+                        <div class="table-value">300 Mbps</div>
+                        <div class="table-value">1 Gbps</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-feature">Upload Speed</div>
+                        <div class="table-value">100 Mbps</div>
+                        <div class="table-value">300 Mbps</div>
+                        <div class="table-value">1 Gbps</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-feature">Data Cap</div>
+                        <div class="table-value">1 TB</div>
+                        <div class="table-value">Unlimited</div>
+                        <div class="table-value">Unlimited</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-feature">WiFi Router</div>
+                        <div class="table-value"><i class="fas fa-check"></i></div>
+                        <div class="table-value"><i class="fas fa-check"></i></div>
+                        <div class="table-value"><i class="fas fa-check"></i></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-feature">Mesh System</div>
+                        <div class="table-value"><i class="fas fa-times"></i></div>
+                        <div class="table-value"><i class="fas fa-check"></i></div>
+                        <div class="table-value"><i class="fas fa-check"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-cta">
+                <h3>Ready to Upgrade Your Home Internet?</h3>
+                <p>Our team will assess your location and provide the best fiber solution for your needs</p>
+                <div class="cta-buttons">
+                    <button class="btn-cta-primary" onclick="contactForService('HomeLink Internet')">
+                        <i class="fas fa-phone-alt"></i> Schedule Installation
+                    </button>
+                    <button class="btn-cta-secondary" onclick="checkAvailability()">
+                        <i class="fas fa-map-marker-alt"></i> Check Availability
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OfficeLink Business Service -->
+    <section id="officelink" class="service-section">
+        <div class="container">
+            <div class="service-header">
+                <div class="service-icon-large">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h2 class="service-title">OfficeLink Business</h2>
+                <p class="service-subtitle">Enterprise-grade fiber connectivity with dedicated bandwidth and 24/7 priority support</p>
+            </div>
+
+            <div class="tech-showcase">
+                <div class="tech-content">
+                    <h3>Business-Grade Reliability</h3>
+                    <p>Keep your business running smoothly with our dedicated fiber connections. With SLA-backed uptime guarantees and priority support, minimize downtime and maximize productivity.</p>
+                    <p>Our business solutions include static IP addresses, advanced security features, and scalable bandwidth to grow with your company.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-cta-primary" onclick="contactForService('OfficeLink Business')">
+                            <i class="fas fa-comments"></i> Get Quote
+                        </button>
+                        <button class="btn-cta-secondary" onclick="viewPlans('officelink')">
+                            <i class="fas fa-eye"></i> View Plans
+                        </button>
+                    </div>
+                </div>
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Office">
+                </div>
+            </div>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Scalable Bandwidth</h3>
+                    <p class="feature-description">Easily upgrade your bandwidth as your business grows without hardware changes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="feature-title">Enhanced Security</h3>
+                    <p class="feature-description">Advanced threat protection, firewall, and secure VPN options for remote teams</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Priority Support</h3>
+                    <p class="feature-description">Dedicated business support team with 24/7 access and guaranteed response times</p>
+                </div>
+            </div>
+
+            <div class="service-plans">
+                <div class="plan-card">
+                    <h3 class="plan-name">Business Starter</h3>
+                    <div class="plan-price">$99.99</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 200 Mbps Symmetrical</li>
+                        <li><i class="fas fa-check"></i> 1 Static IP</li>
+                        <li><i class="fas fa-check"></i> Basic Security</li>
+                        <li><i class="fas fa-check"></i> Business Hours Support</li>
+                        <li><i class="fas fa-times"></i> No SLA</li>
+                    </ul>
+                    <button class="btn-cta-primary" onclick="selectPlan('Business Starter', 99.99)">Select Plan</button>
+                </div>
+
+                <div class="plan-card popular">
+                    <h3 class="plan-name">Business Pro</h3>
+                    <div class="plan-price">$199.99</div>
+                    <div class="plan-period">per month</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 500 Mbps Symmetrical</li>
+                        <li><i class="fas fa-check"></i> 5 Static IPs</li>
+                        <li><i class="fas fa-check"></i> Advanced Security</li>
+                        <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                        <li><i class="fas fa-check"></i> 99.9% SLA</li>
+                    </ul>
+                    <button class="btn-cta-primary glowing" onclick="selectPlan('Business Pro', 199.99)">Select Plan</button>
+                </div>
+
+                <div class="plan-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">Custom</div>
+                    <div class="plan-period">tailored solution</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 1 Gbps+ Symmetrical</li>
+                        <li><i class="fas fa-check"></i> Multiple Static IPs</li>
+                        <li><i class="fas fa-check"></i> Enterprise Security</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                        <li><i class="fas fa-check"></i> 99.99% SLA</li>
+                    </ul>
+                    <button class="btn-cta-primary" onclick="contactForService('Enterprise Solution')">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Solutions Service -->
+    <section id="corporate" class="service-section">
+        <div class="container">
+            <div class="service-header">
+                <div class="service-icon-large">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h2 class="service-title">Corporate Solutions</h2>
+                <p class="service-subtitle">Custom fiber infrastructure and managed services for large enterprises and institutions</p>
+            </div>
+
+            <div class="tech-showcase">
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Data Center">
+                </div>
+                <div class="tech-content">
+                    <h3>Infrastructure Solutions</h3>
+                    <p>We design, build, and manage complete fiber optic networks for corporate campuses, data centers, and multi-site organizations.</p>
+                    <p>Our solutions include dark fiber leases, wavelength services, and fully managed network operations with comprehensive monitoring and reporting.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-cta-primary" onclick="contactForService('Corporate Solutions')">
+                            <i class="fas fa-comments"></i> Contact Sales
+                        </button>
+                        <button class="btn-cta-secondary" onclick="downloadBrochure()">
+                            <i class="fas fa-download"></i> Download Brochure
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="feature-title">Network Design</h3>
+                    <p class="feature-description">Custom network architecture tailored to your specific business requirements and growth plans</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">Implementation</h3>
+                    <p class="feature-description">End-to-end project management from planning to deployment with minimal disruption</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="feature-title">Managed Services</h3>
+                    <p class="feature-description">24/7 monitoring, maintenance, and optimization of your network infrastructure</p>
+                </div>
+            </div>
+
+            <div class="service-cta">
+                <h3>Transform Your Corporate Network</h3>
+                <p>Schedule a consultation with our enterprise solutions team to discuss your specific requirements</p>
+                <div class="cta-buttons">
+                    <button class="btn-cta-primary" onclick="contactForService('Corporate Solutions')">
+                        <i class="fas fa-calendar-alt"></i> Schedule Consultation
+                    </button>
+                    <button class="btn-cta-secondary" onclick="viewCaseStudies()">
+                        <i class="fas fa-file-alt"></i> View Case Studies
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Chatbot -->
+    <div id="chatbot-container">
+        <div id="chatbot-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+                <path d="M7 9h10v2H7zm0 4h7v2H7z"/>
+            </svg>
+        </div>
+        
+        <div id="chatbot-window">
+            <div class="chatbot-header">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%234b6cb7'/%3E%3Cpath d='M20 10c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-13h4v4h-4zm0 6h4v4h-4z' fill='white'/%3E%3C/svg%3E" alt="HR Assistant">
+                <div class="chatbot-header-info">
+                    <h3>HR Assistant</h3>
+                    <p>Online • Ready to help</p>
+                </div>
+                <button class="chatbot-close" id="chatbot-close">×</button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <!-- Messages will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message here...">
+                <button id="chatbot-send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="categories.html">NumeroLink TV</a></li>
+                        <li><a href="categories.html">HomeLink Internet</a></li>
+                        <li><a href="categories.html">OfficeLink Business</a></li>
+                        <li><a href="categories.html">Corporate Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-shop">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="shop.html">Routers & Modems</a></li>
+                        <li><a href="shop.html">TV Boxes</a></li>
+                        <li><a href="shop.html">Accessories</a></li>
+                        <li><a href="shop.html">Bundles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="footer-social-links">
+            <a href="https://www.facebook.com/CreoLink/" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/Creolink" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+            <a href="http://linkedin.com/company/creolink-communication" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/creolink.communications?igsh=MWkzZWcxODZ3b3BqYQ==" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2023 Creolink. All rights reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Service Navigation
+        function showService(serviceId) {
+            // Hide all service sections
+            document.querySelectorAll('.service-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected service section
+            document.getElementById(serviceId).classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.service-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the clicked button
+            const buttons = document.querySelectorAll('.service-nav-btn');
+            for (let i = 0; i < buttons.length; i++) {
+                if (buttons[i].getAttribute('onclick').includes(serviceId)) {
+                    buttons[i].classList.add('active');
+                    break;
+                }
+            }
+            
+            // Scroll to top of the service section
+            document.getElementById(serviceId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Language Selector
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                document.getElementById('current-language').textContent = this.textContent;
+                // In a real implementation, you would change the language of the page here
+            });
+        });
+
+        // Plan Selection
+        function selectPlan(planName, price) {
+            alert(`You've selected the ${planName} plan for $${price}/month. You will be redirected to the checkout page.`);
+            // In a real implementation, you would redirect to checkout with plan details
+        }
+
+        // Contact for Service
+        function contactForService(serviceName) {
+            alert(`Thank you for your interest in ${serviceName}. Our team will contact you shortly.`);
+            // In a real implementation, you would open a contact form or redirect to contact page
+        }
+
+        // View Plans
+        function viewPlans(serviceType) {
+            // This would typically scroll to the plans section
+            const plansSection = document.querySelector(`#${serviceType} .service-plans`);
+            if (plansSection) {
+                plansSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Check Availability
+        function checkAvailability() {
+            const address = prompt("Please enter your address to check service availability:");
+            if (address) {
+                alert(`Thank you! We'll check availability for: ${address}. Our team will contact you with results.`);
+            }
+        }
+
+        // Download Brochure
+        function downloadBrochure() {
+            alert("The corporate solutions brochure will begin downloading shortly.");
+            // In a real implementation, you would trigger a file download
+        }
+
+        // View Case Studies
+        function viewCaseStudies() {
+            alert("Redirecting to our case studies page...");
+            // In a real implementation, you would redirect to the case studies page
+        }
+
+        // Scroll animations
+        window.addEventListener('scroll', function() {
+            const serviceSections = document.querySelectorAll('.service-section');
+            serviceSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+    </script>
+
+    <script src="/chatbot.js"></script>
+
+</body>
+</html>

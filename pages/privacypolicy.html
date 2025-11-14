@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Creolink</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-green: #539946;
+      --dark-green: #37823c;
+      --light-green: #58a24b;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+      --medium-gray: #6c757d;
+      --dark-gray: #333333;
+      --orange: #ff6b35;
+      --footer-bg: #0a2c4e;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--dark-gray);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    .top-header {
+      background: var(--dark-green);
+      color: var(--white);
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .top-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 20px;
+    }
+
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .language-selector {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .language-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--white);
+      color: var(--dark-gray);
+      min-width: 120px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .language-dropdown a {
+      display: block;
+      padding: 8px 15px;
+      text-decoration: none;
+      color: var(--dark-gray);
+    }
+
+    .language-dropdown a:hover {
+      background: var(--light-gray);
+    }
+
+    .language-selector:hover .language-dropdown {
+      display: block;
+    }
+
+    .main-header {
+      background: var(--white);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .main-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-menu li {
+      position: relative;
+    }
+
+    .nav-menu a {
+      color: var(--dark-gray);
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary-green);
+    }
+
+    .nav-menu a.active {
+      color: var(--primary-green);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-menu a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-green);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      min-width: 200px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      z-index: 100;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--light-gray);
+      transition: all 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--light-gray);
+      color: var(--primary-green);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-login, .btn-signup {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: var(--primary-green);
+      border: 2px solid var(--primary-green);
+    }
+
+    .btn-login:hover {
+      background: var(--primary-green);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-signup {
+      background: var(--primary-green);
+      color: var(--white);
+      border: 2px solid var(--primary-green);
+    }
+
+    .btn-signup:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--dark-gray);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Policy Header */
+    .policy-header {
+      background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+      color: white;
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .policy-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .policy-header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .policy-content {
+      padding: 60px 0;
+      background: #f8f9fa;
+    }
+
+    .policy-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .policy-section h2 {
+      color: var(--primary-green);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .policy-section h3 {
+      color: #333;
+      margin: 25px 0 15px;
+    }
+
+    .policy-section p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .policy-section ul {
+      margin: 15px 0;
+      padding-left: 20px;
+    }
+
+    .policy-section li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .last-updated {
+      background: #e8f4ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--primary-green);
+    }
+
+    .contact-info-box {
+      background: #f0f5ff;
+      padding: 25px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--footer-bg);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-links h4, .footer-services h4, .footer-shop h4, .footer-social h4 {
+      color: var(--white);
+      font-size: 19.2px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-links ul, .footer-services ul, .footer-shop ul {
+      list-style: none;
+    }
+
+    .footer-links li, .footer-services li, .footer-shop li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a, .footer-services a, .footer-shop a {
+      opacity: 0.8;
+      transition: all 0.3s;
+      font-size: 16px;
+    }
+
+    .footer-links a:hover, .footer-services a:hover, .footer-shop a:hover {
+      opacity: 1;
+      color: var(--light-green);
+      padding-left: 5px;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .footer-social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+
+    .footer-social-link:hover {
+      background: var(--primary-green);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0.7;
+      font-size: 14px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      transition: opacity 0.3s;
+      font-size: 14px;
+    }
+
+    .footer-bottom-links a:hover {
+      opacity: 1;
+      color: var(--light-green);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .policy-section {
+        padding: 25px;
+      }
+      
+      .policy-header {
+        padding: 60px 0 40px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+      
+      .footer-bottom-links {
+        justify-content: center;
+      }
+      
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .header-actions {
+        gap: 15px;
+      }
+
+      .btn-login, .btn-signup {
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-header .container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+      
+      .logo img {
+        height: 35px;
+      }
+      
+      .header-actions {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="container">
+      <div class="contact-info">
+        <div><i class="fas fa-phone"></i> (+237) 680000608</div>
+        <div><i class="fas fa-envelope"></i> support@creolink.com</div>
+      </div>
+      <div class="language-selector">
+        <i class="fas fa-globe"></i>
+        <span id="current-language">English</span>
+        <i class="fas fa-chevron-down"></i>
+        <div class="language-dropdown" id="language-dropdown">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">
+          <img src="/images/creolink_logo.png" alt="Creolink - Premium Fiber Optics & Communication Solutions">
+        </a>
+      </div>
+      <nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/dashboard.html">Dashboard</a></li>
+          <li class="dropdown">
+            <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+              <a href="../pages/categories.html">NumeroLink (TV Services)</a>
+              <a href="../pages/categories.html">HomeLink (Home Internet)</a>
+              <a href="../pages/categories.html">OfficeLink (Business Internet)</a>
+              <a href="../pages/categories.html">Corporate Solutions</a>
+            </div>
+          </li>
+          <li><a href="../pages/shop.html">Shop</a></li>
+          <li><a href="../pages/blog.html">Blog</a></li>
+          <li><a href="../pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn-login" href="/pages/login.html">Login</a>
+        <a class="btn-signup" href="/pages/signup.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Policy Header -->
+  <div class="policy-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>Your privacy is important to us. Learn how we collect, use, and protect your personal information.</p>
+    </div>
+  </div>
+
+  <!-- Policy Content -->
+  <section class="policy-content">
+    <div class="container">
+      <div class="last-updated">
+        <p><strong>Last Updated:</strong> January 15, 2025</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Information We Collect</h2>
+        <p>Creolink Communications collects information that you provide directly to us, including:</p>
+        <ul>
+          <li><strong>Personal Identification Information:</strong> Name, email address, phone number, postal address, and government-issued identification when necessary for service activation.</li>
+          <li><strong>Account Information:</strong> Username, password, and security questions for account access.</li>
+          <li><strong>Payment Information:</strong> Credit card details, billing address, and payment history. Note that we use secure payment processors and do not store full credit card numbers on our servers.</li>
+          <li><strong>Service Usage Information:</strong> Data about how you use our services, including connection logs, bandwidth usage, and service preferences.</li>
+          <li><strong>Technical Information:</strong> IP address, device information, browser type, and operating system.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. How We Use Your Information</h2>
+        <p>We use the information we collect for various purposes, including:</p>
+        <ul>
+          <li>Providing, maintaining, and improving our services</li>
+          <li>Processing transactions and sending related information</li>
+          <li>Responding to your comments, questions, and requests</li>
+          <li>Sending technical notices, updates, security alerts, and support messages</li>
+          <li>Communicating about products, services, offers, and events</li>
+          <li>Monitoring and analyzing trends, usage, and activities</li>
+          <li>Detecting, investigating, and preventing fraudulent transactions and other illegal activities</li>
+          <li>Personalizing your experience with our services</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Information Sharing and Disclosure</h2>
+        <p>We do not sell your personal information to third parties. We may share information we collect about you as follows:</p>
+        
+        <h3>Service Providers</h3>
+        <p>We may share your information with third-party vendors, consultants, and other service providers who need access to such information to carry out work on our behalf, such as:</p>
+        <ul>
+          <li>Payment processing</li>
+          <li>Customer support services</li>
+          <li>Network infrastructure providers</li>
+          <li>Marketing and analytics partners</li>
+        </ul>
+        
+        <h3>Legal Requirements</h3>
+        <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).</p>
+        
+        <h3>Business Transfers</h3>
+        <p>If Creolink Communications is involved in a merger, acquisition, or sale of all or a portion of its assets, your information may be transferred as part of that transaction.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. Data Security</h2>
+        <p>We implement appropriate technical and organizational security measures designed to protect your personal information against accidental or unlawful destruction, loss, alteration, unauthorized disclosure, or access. However, no internet transmission is completely secure, and we cannot guarantee the security of your information.</p>
+        
+        <p>Some of the security measures we employ include:</p>
+        <ul>
+          <li>Encryption of sensitive data in transit and at rest</li>
+          <li>Regular security assessments and vulnerability testing</li>
+          <li>Access controls and authentication mechanisms</li>
+          <li>Employee training on data protection</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Data Retention</h2>
+        <p>We retain personal information we collect from you where we have an ongoing legitimate business need to do so (for example, to provide you with a service you have requested or to comply with applicable legal, tax, or accounting requirements).</p>
+        
+        <p>When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it, or if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Your Rights and Choices</h2>
+        <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+        <ul>
+          <li><strong>Access:</strong> You can request access to the personal information we hold about you.</li>
+          <li><strong>Correction:</strong> You can request that we correct or update your personal information.</li>
+          <li><strong>Deletion:</strong> You can request that we delete your personal information.</li>
+          <li><strong>Restriction:</strong> You can request that we restrict the processing of your personal information.</li>
+          <li><strong>Portability:</strong> You can request a copy of your personal information in a structured, machine-readable format.</li>
+          <li><strong>Objection:</strong> You can object to our processing of your personal information.</li>
+          <li><strong>Withdraw Consent:</strong> Where we rely on your consent to process personal information, you have the right to withdraw that consent at any time.</li>
+        </ul>
+        
+        <p>To exercise any of these rights, please contact us using the information provided in the "Contact Us" section below.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>7. International Data Transfers</h2>
+        <p>Creolink Communications is based in Cameroon and we process and store information on servers located in Cameroon. However, we may transfer your personal information to our service providers in other countries for the purposes described in this Privacy Policy.</p>
+        
+        <p>When we transfer personal information from the European Economic Area (EEA), United Kingdom, or Switzerland to countries that have not been deemed to provide an adequate level of protection, we use appropriate safeguards, such as standard contractual clauses approved by the European Commission.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>8. Children's Privacy</h2>
+        <p>Our services are not directed to individuals under the age of 16, and we do not knowingly collect personal information from children under 16. If we become aware that a child under 16 has provided us with personal information, we will take steps to delete such information. If you become aware that a child has provided us with personal information, please contact us.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>9. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. If we make changes, we will notify you by revising the "Last Updated" date at the top of this policy and, in some cases, we may provide you with additional notice (such as adding a statement to our website or sending you a notification).</p>
+        
+        <p>We encourage you to periodically review this page for the latest information on our privacy practices.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>10. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+        
+        <div class="contact-info-box">
+          <p><strong>Creolink Communications</strong></p>
+          <p>Email: privacy@creolink.com</p>
+          <p>Phone: (+237) 680000608</p>
+          <p>Address: Buea, South West Region, Cameroon</p>
+          <p>Attention: Data Protection Officer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Chatbot -->
+    <div id="chatbot-container">
+        <div id="chatbot-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+                <path d="M7 9h10v2H7zm0 4h7v2H7z"/>
+            </svg>
+        </div>
+        
+        <div id="chatbot-window">
+            <div class="chatbot-header">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%234b6cb7'/%3E%3Cpath d='M20 10c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-13h4v4h-4zm0 6h4v4h-4z' fill='white'/%3E%3C/svg%3E" alt="HR Assistant">
+                <div class="chatbot-header-info">
+                    <h3>HR Assistant</h3>
+                    <p>Online • Ready to help</p>
+                </div>
+                <button class="chatbot-close" id="chatbot-close">×</button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <!-- Messages will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message here...">
+                <button id="chatbot-send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/about.html">About Us</a></li>
+            <li><a href="../pages/categories.html">Services</a></li>
+            <li><a href="../pages/blog.html">Blog</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-services">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="../pages/categories.html">NumeroLink (TV)</a></li>
+            <li><a href="../pages/categories.html">HomeLink (Residential)</a></li>
+            <li><a href="../pages/categories.html">OfficeLink (Business)</a></li>
+            <li><a href="../pages/categories.html">Corporate Solutions</a></li>
+            <li><a href="../pages/contact.html">Technical Support</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-shop">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="../pages/shop.html">Modems & Routers</a></li>
+            <li><a href="../pages/shop.html">TV Decoders</a></li>
+            <li><a href="../pages/shop.html">Networking Equipment</a></li>
+            <li><a href="../pages/shop.html">Electronics</a></li>
+            <li><a href="../pages/shop.html">Accessories</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="footer-social-links">
+            <a href="https://www.facebook.com/CreoLink/" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/Creolink" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+            <a href="http://linkedin.com/company/creolink-communication" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/creolink.communications?igsh=MWkzZWcxODZ3b3BqYQ==" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>
+          <p>© 2025 Creolink Communications. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom-links">
+          <a href="../pages/privacypolicy.html">Privacy Policy</a>
+          <a href="../pages/termsofservice.html">Terms of Service</a>
+          <a href="../pages/cookiepolicy.html">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      this.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+      });
+    });
+
+    // Language selector functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const languageSelector = document.querySelector('.language-selector');
+      const currentLanguage = document.getElementById('current-language');
+      const languageDropdown = document.getElementById('language-dropdown');
+      
+      // Handle language selection
+      languageDropdown.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          e.preventDefault();
+          const selectedLang = e.target.getAttribute('data-lang');
+          currentLanguage.textContent = e.target.textContent;
+          
+          // In a real implementation, this would change the page language
+          console.log('Language changed to:', selectedLang);
+        }
+      });
+      
+      // Login/Signup button functionality (placeholder)
+      document.querySelector('.btn-login').addEventListener('click', function() {
+        alert('Login functionality would go here');
+      });
+      
+      document.querySelector('.btn-signup').addEventListener('click', function() {
+        alert('Sign Up functionality would go here');
+      });
+    });
+  </script>
+  <script src="/chatbot.js"></script>
+
+</body>
+</html>
